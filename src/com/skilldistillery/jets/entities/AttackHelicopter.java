@@ -24,11 +24,11 @@ public class AttackHelicopter extends Jet implements CargoCarrier, CombatReady {
 	}
 
 	public void loadCargo() {
-
+		System.out.println("Loading cargo for this jet: " + toString());
 	}
 
 	public void fight() {
-		
+		System.out.println("BOOM! Sent this jet to fight: " + toString());
 	}
 
 }

@@ -23,7 +23,7 @@ public class BomberJet extends Jet implements CombatReady {
 		}
 	
 	public void fight() {
-		
+		System.out.println("BOOM! Sent this jet to fight: " + toString());
 	}
 	
 	

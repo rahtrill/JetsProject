@@ -22,7 +22,7 @@ public class CargoPlane extends Jet implements CargoCarrier {
 				+ super.getRange() + "\t Price: $" + super.getPrice() + "]";	}
 	
 	public void loadCargo() {
-		
+		System.out.println("Loading cargo for this jet: " + toString());
 	}
 	
 	

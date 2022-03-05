@@ -10,7 +10,9 @@ import java.util.Scanner;
 import com.skilldistillery.jets.entities.AirField;
 import com.skilldistillery.jets.entities.AttackHelicopter;
 import com.skilldistillery.jets.entities.BomberJet;
+import com.skilldistillery.jets.entities.CargoCarrier;
 import com.skilldistillery.jets.entities.CargoPlane;
+import com.skilldistillery.jets.entities.CombatReady;
 import com.skilldistillery.jets.entities.FighterJet;
 import com.skilldistillery.jets.entities.Jet;
 
@@ -58,21 +60,21 @@ public class JetsApplication {
 		
 		while (inMenu) {
 			System.out.println();
-			System.out.println("===============================================================");
-			System.out.println("============================ MENU =============================");
-			System.out.println("===============================================================");
-			System.out.println("= 1. List the fleet                                           =");
-			System.out.println("= 2. Fly all the jets                                         =");
-			System.out.println("= 3. View the fastest jet                                     =");
-			System.out.println("= 4. View the jet with the longest range                      =");
-			System.out.println("= 5. Load all of the existing Cargo Jets                      =");
-			System.out.println("= 6. Initiate a dogfight with one of the existng fighter jets =");
-			System.out.println("= 7. Add a jet to the fleet                                   =");
-			System.out.println("= 4. Remove a jet from the fleet                              =");
-			System.out.println("= 4. Exit the menu                                            =");
-			System.out.println("===============================================================");
-			System.out.println("=                    (Input option number)                    =");
-			System.out.println("===============================================================");
+			System.out.println("================================================================");
+			System.out.println("============================= MENU =============================");
+			System.out.println("================================================================");
+			System.out.println("= 1. List the fleet                                            =");
+			System.out.println("= 2. Fly all the jets                                          =");
+			System.out.println("= 3. View the fastest jet                                      =");
+			System.out.println("= 4. View the jet with the longest range                       =");
+			System.out.println("= 5. Load all of the existing Cargo Jets                       =");
+			System.out.println("= 6. Initiate a dogfight with one of the existing combat jets  =");
+			System.out.println("= 7. Add a jet to the fleet                                    =");
+			System.out.println("= 8. Remove a jet from the fleet                               =");
+			System.out.println("= 9. Exit the menu                                             =");
+			System.out.println("================================================================");
+			System.out.println("=                    (Input option number)                     =");
+			System.out.println("================================================================");
 			System.out.println();
 			int answer = kb.nextInt();
 			
@@ -89,6 +91,8 @@ public class JetsApplication {
 					System.out.println(jet);
 				}
 				
+				break;
+				
 			case 2:
 				
 				List<Jet> jetList2 = airField.getJets();
@@ -102,19 +106,110 @@ public class JetsApplication {
 					System.out.println();
 				}
 				
+				break;
+				
 			case 3:
+				
+				List<Jet> jetList3 = airField.getJets();
+				
+				System.out.println("Finding the fastest jet...");
+				System.out.println();
+				
+				Jet fastest = jetList3.get(0);
+				
+				for (Jet jet : jetList3) {
+					if (jet.getSpeed() > fastest.getSpeed()) {
+						fastest = jet;
+					}
+				}
+				
+				System.out.println("The fastest jet: ");
+				System.out.println(fastest);
+				
+				System.out.println();
+				System.out.println("Finding the jet that can travel the furthest...");
+				System.out.println();
+				
+				Jet furthest = jetList3.get(0);
+				
+				for (Jet jet : jetList3) {
+					if (jet.getRange() > furthest.getRange()) {
+						furthest = jet;
+					}
+				}
+				
+				System.out.println("The jet that can travel the furthest: ");
+				System.out.println(furthest);
+				
+				break;
 				
 			case 4:
 				
+				List<Jet> jetList4 = airField.getJets();
+				
+				System.out.println("Loading all cargo planes...");
+				System.out.println();
+				
+				for (Jet jet : jetList4) {
+					if (jet instanceof CargoCarrier) {
+						((CargoCarrier) jet).loadCargo();
+					}
+				}
+				
+				break;
+				
 			case 5:
 				
+				List<Jet> jetList5 = airField.getJets();
+				
+				System.out.println("Sending all combat ready jets to fight...");
+				System.out.println();
+				
+				for (Jet jet : jetList5) {
+					if (jet instanceof CombatReady) {
+						((CombatReady) jet).fight();
+					}
+				}
+				
+				break;
+				
 			case 6:
+				
+				System.out.println();
+				System.out.println("================================================================");
+				System.out.println("============================= JETS =============================");
+				System.out.println("=========== What kind of jet would you like to add? ============");
+				System.out.println("================================================================");
+				System.out.println("= 1. Attack Helicopter [Cargo Carrier & Combat Ready]          =");
+				System.out.println("= 2. Bomber Jet [Combat Ready]                                 =");
+				System.out.println("= 3. Cargo Plane [Cargo Carrier]                               =");
+				System.out.println("= 4. Fighter Jet [Combat Ready]                                =");
+				System.out.println("================================================================");
+				System.out.println("=                    (Input option number)                     =");
+				System.out.println("================================================================");
+				System.out.println();
+				int answer2 = kb.nextInt();
+				
+				switch (answer2) {
+				case 1:
+					
+				case 2:
+					
+				case 3:
+					
+				case 4:
+					
+				default:
+					
+				}
 				
 			case 7:
 				
 			case 8:
 				
 			case 9:
+				
+			default:
 				
 			}
 		}

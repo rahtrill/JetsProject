@@ -22,7 +22,7 @@ public class FighterJet extends Jet implements CombatReady{
 				+ super.getRange() + "\t Price: $" + super.getPrice() + "]";	}
 	
 	public void fight() {
-		
+		System.out.println("BOOM! Sent this jet to fight: " + toString());
 	}
 	
 	
