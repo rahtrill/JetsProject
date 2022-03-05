@@ -21,6 +21,11 @@ public class FighterJet extends Jet implements CombatReady{
 		return "[Fighter Jet \t Model: " + super.getModel() + "\t Speed: " + super.getSpeed() + "\t Range: "
 				+ super.getRange() + "\t Price: $" + super.getPrice() + "]";	}
 	
+	public String create() {
+		return "FighterJet," + super.getModel() + "," + super.getSpeed() + ","
+				+ super.getRange() + "," + super.getPrice();
+	}
+	
 	public void fight() {
 		System.out.println("BOOM! Sent this jet to fight: " + toString());
 	}

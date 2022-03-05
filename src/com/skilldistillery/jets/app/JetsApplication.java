@@ -1,20 +1,9 @@
 package com.skilldistillery.jets.app;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
-import com.skilldistillery.jets.entities.AirField;
-import com.skilldistillery.jets.entities.AttackHelicopter;
-import com.skilldistillery.jets.entities.BomberJet;
-import com.skilldistillery.jets.entities.CargoCarrier;
-import com.skilldistillery.jets.entities.CargoPlane;
-import com.skilldistillery.jets.entities.CombatReady;
-import com.skilldistillery.jets.entities.FighterJet;
-import com.skilldistillery.jets.entities.Jet;
+import com.skilldistillery.jets.entities.*;
 
 public class JetsApplication {
 	
@@ -126,13 +115,18 @@ public class JetsApplication {
 				System.out.println("The fastest jet: ");
 				System.out.println(fastest);
 				
-				System.out.println();
+				break;
+				
+			case 4:
+				
+				List<Jet> jetList4 = airField.getJets();
+				
 				System.out.println("Finding the jet that can travel the furthest...");
 				System.out.println();
 				
-				Jet furthest = jetList3.get(0);
+				Jet furthest = jetList4.get(0);
 				
-				for (Jet jet : jetList3) {
+				for (Jet jet : jetList4) {
 					if (jet.getRange() > furthest.getRange()) {
 						furthest = jet;
 					}
@@ -143,14 +137,14 @@ public class JetsApplication {
 				
 				break;
 				
-			case 4:
+			case 5:
 				
-				List<Jet> jetList4 = airField.getJets();
+				List<Jet> jetList5 = airField.getJets();
 				
 				System.out.println("Loading all cargo planes...");
 				System.out.println();
 				
-				for (Jet jet : jetList4) {
+				for (Jet jet : jetList5) {
 					if (jet instanceof CargoCarrier) {
 						((CargoCarrier) jet).loadCargo();
 					}
@@ -158,14 +152,14 @@ public class JetsApplication {
 				
 				break;
 				
-			case 5:
+			case 6:
 				
-				List<Jet> jetList5 = airField.getJets();
+				List<Jet> jetList6 = airField.getJets();
 				
 				System.out.println("Sending all combat ready jets to fight...");
 				System.out.println();
 				
-				for (Jet jet : jetList5) {
+				for (Jet jet : jetList6) {
 					if (jet instanceof CombatReady) {
 						((CombatReady) jet).fight();
 					}
@@ -173,7 +167,7 @@ public class JetsApplication {
 				
 				break;
 				
-			case 6:
+			case 7:
 				
 				System.out.println();
 				System.out.println("================================================================");
@@ -191,25 +185,101 @@ public class JetsApplication {
 				int answer2 = kb.nextInt();
 				
 				switch (answer2) {
+				
 				case 1:
+					
+					String name = "Attack Helicopter";
+					
+					JetsApplication JA = new JetsApplication();
+					
+					String[] info = JA.displayNewJets(name);
+					
+					Jet newJet = new AttackHelicopter(info[0], Double.parseDouble(info[1]), Integer.parseInt(info[2]), Long.parseLong(info[3]));
+					
+					airField.addJet(newJet);
+					
+					break;
 					
 				case 2:
 					
+					String name1 = "Bomber Jet";
+					
+					JetsApplication JA1 = new JetsApplication();
+					
+					String[] info1 = JA1.displayNewJets(name1);
+					
+					Jet newJet1 = new BomberJet(info1[0], Double.parseDouble(info1[1]), Integer.parseInt(info1[2]), Long.parseLong(info1[3]));
+					
+					airField.addJet(newJet1);
+					
+					break;
+					
 				case 3:
+					
+					String name2 = "Cargo Plane";
+					
+					JetsApplication JA2 = new JetsApplication();
+					
+					String[] info2 = JA2.displayNewJets(name2);
+					
+					Jet newJet2 = new CargoPlane(info2[0], Double.parseDouble(info2[1]), Integer.parseInt(info2[2]), Long.parseLong(info2[3]));
+					
+					airField.addJet(newJet2);
+					
+					break;
 					
 				case 4:
 					
+					String name3 = "Fighter Jet";
+					
+					JetsApplication JA3 = new JetsApplication();
+					
+					String[] info3 = JA3.displayNewJets(name3);
+					
+					Jet newJet3 = new FighterJet(info3[0], Double.parseDouble(info3[1]), Integer.parseInt(info3[2]), Long.parseLong(info3[3]));
+					
+					airField.addJet(newJet3);
+					
+					break;
+					
 				default:
+					
+					System.out.println("Input invalid. Sending back to main menu.");
+					
+					break;
 					
 				}
 				
-			case 7:
+				break;
 				
 			case 8:
 				
+				System.out.println();
+				System.out.println("================================================================");
+				System.out.println("============================= JETS =============================");
+				System.out.println("=========== What kind of jet would you like to remove? =========");
+				System.out.println("================================================================");
+				System.out.println("= 1. Attack Helicopter [Cargo Carrier & Combat Ready]          =");
+				System.out.println("= 2. Bomber Jet [Combat Ready]                                 =");
+				System.out.println("= 3. Cargo Plane [Cargo Carrier]                               =");
+				System.out.println("= 4. Fighter Jet [Combat Ready]                                =");
+				System.out.println("================================================================");
+				System.out.println("=                    (Input option number)                     =");
+				System.out.println("================================================================");
+				System.out.println();
+				int answer3 = kb.nextInt();
+				
+				//TODO: Finish the remove list. My idea was to list out what they'd like to remove by number, User Story #10;
+				
 			case 9:
 				
+				inMenu = false;
+				
+				break;
+				
 			default:
+				
+				System.out.println("Invalid input! Try again...");
 				
 			}
 		}
@@ -253,6 +323,28 @@ public class JetsApplication {
 		
 		
 		return jet;
+	}
+	
+	private String[] displayNewJets(String name) {
+		
+		String[] info = new String[4];
+		
+		System.out.println();
+		System.out.println(" Please input your " + name + " information in the following format: ");
+		System.out.println();
+		System.out.println("=====================================================================");
+		System.out.println("=                    Model, Speed, Range, Price                     =");
+		System.out.println("=            (Please put a \", \" in between each value)              =");
+		System.out.println("=====================================================================");
+		System.out.println();
+		
+		String input = kb.next();
+		input = input + kb.nextLine();
+		
+		info = input.split(", ");
+		
+		return info;
+		
 	}
 
 }

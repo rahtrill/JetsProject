@@ -21,6 +21,11 @@ public class CargoPlane extends Jet implements CargoCarrier {
 		return "[Cargo Plane \t Model: " + super.getModel() + "\t Speed: " + super.getSpeed() + "\t Range: "
 				+ super.getRange() + "\t Price: $" + super.getPrice() + "]";	}
 	
+	public String create() {
+		return "CargoPlane," + super.getModel() + "," + super.getSpeed() + ","
+				+ super.getRange() + "," + super.getPrice();
+	}
+	
 	public void loadCargo() {
 		System.out.println("Loading cargo for this jet: " + toString());
 	}

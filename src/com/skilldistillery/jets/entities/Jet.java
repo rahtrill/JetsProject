@@ -16,6 +16,8 @@ public abstract class Jet{
 	public abstract void fly();
 	
 	public abstract double getSpeedInMach();
+	
+	public abstract String create();
 
 	public String getModel() {
 		return model;

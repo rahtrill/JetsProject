@@ -22,6 +22,11 @@ public class AttackHelicopter extends Jet implements CargoCarrier, CombatReady {
 		return "[Attack Helicopter \t Model: " + super.getModel() + "\t Speed: " + super.getSpeed() + "\t Range: "
 				+ super.getRange() + "\t Price: $" + super.getPrice() + "]";
 	}
+	
+	public String create() {
+		return "AttackHelicopter," + super.getModel() + "," + super.getSpeed() + ","
+				+ super.getRange() + "," + super.getPrice();
+	}
 
 	public void loadCargo() {
 		System.out.println("Loading cargo for this jet: " + toString());
