@@ -24,12 +24,15 @@ public class AirField {
 		AF.pushJet(this.jets);
 	}
 	
-	public List getJets() {
+	public List<Jet> getJets() {
 		return jets;
 	}
 	
-	public void removeJets() {
+	public void removeJet(int index) {
+		jets.remove(index-1);
 		
+		AirField AF = new AirField();
+		AF.pushJet(this.jets);
 	}
 	
 	public void pushJet(List<Jet> jets1) {

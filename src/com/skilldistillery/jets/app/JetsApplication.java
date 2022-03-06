@@ -57,7 +57,7 @@ public class JetsApplication {
 			System.out.println("= 3. View the fastest jet                                      =");
 			System.out.println("= 4. View the jet with the longest range                       =");
 			System.out.println("= 5. Load all of the existing Cargo Jets                       =");
-			System.out.println("= 6. Initiate a dogfight with one of the existing combat jets  =");
+			System.out.println("= 6. Initiate a dogfight with all of the existing combat jets  =");
 			System.out.println("= 7. Add a jet to the fleet                                    =");
 			System.out.println("= 8. Remove a jet from the fleet                               =");
 			System.out.println("= 9. Exit the menu                                             =");
@@ -257,23 +257,32 @@ public class JetsApplication {
 				System.out.println();
 				System.out.println("================================================================");
 				System.out.println("============================= JETS =============================");
-				System.out.println("=========== What kind of jet would you like to remove? =========");
+				System.out.println("=============== What jet would you like to remove? =============");
 				System.out.println("================================================================");
-				System.out.println("= 1. Attack Helicopter [Cargo Carrier & Combat Ready]          =");
-				System.out.println("= 2. Bomber Jet [Combat Ready]                                 =");
-				System.out.println("= 3. Cargo Plane [Cargo Carrier]                               =");
-				System.out.println("= 4. Fighter Jet [Combat Ready]                                =");
+				
+				List<Jet> listOfJets = airField.getJets();
+				
+				for (int i = 0; i < listOfJets.size(); i++) {
+					System.out.println("= " + (i+1) + ". " + listOfJets.get(i));
+				}
+				
 				System.out.println("================================================================");
 				System.out.println("=                    (Input option number)                     =");
 				System.out.println("================================================================");
 				System.out.println();
 				int answer3 = kb.nextInt();
 				
-				//TODO: Finish the remove list. My idea was to list out what they'd like to remove by number, User Story #10;
+				System.out.println("Removing the " + listOfJets.get(answer3-1).getModel() + "...");
+				
+				airField.removeJet(answer3);
+				
+				break;
 				
 			case 9:
 				
 				inMenu = false;
+				
+				System.out.println("Thank you for using the Jet Application! Goodbye!");
 				
 				break;
 				

@@ -14,7 +14,7 @@ public class AttackHelicopter extends Jet implements CargoCarrier, CombatReady {
 	}
 
 	public double getSpeedInMach() {
-		return 0.0;
+		return super.getSpeed() * 0.001303;
 	}
 
 	@Override

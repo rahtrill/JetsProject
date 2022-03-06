@@ -13,7 +13,7 @@ public class CargoPlane extends Jet implements CargoCarrier {
 		System.out.printf("The fuel would last for %.2f hours.",fuelRange);	}
 	
 	public double getSpeedInMach() {
-		return 0.0;
+		return super.getSpeed() * 0.001303;
 	}
 	
 	@Override

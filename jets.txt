@@ -1,5 +1,5 @@
-CargoPlane,Double C-133,125,1200,1200000
-FighterJet,F-15 Eagle,670,850,15350000
-BomberJet,F-22 Raptor,450,1050,10575000
-AttackHelicopter,AH-17 Viper,325,450,6590000
-FighterJet,F-16 Fighting Falcon,850,775,13335000
+CargoPlane,Double C-133,125.0,1200,1200000
+FighterJet,F-15 Eagle,670.0,850,15350000
+BomberJet,F-22 Raptor,450.0,1050,10575000
+AttackHelicopter,AH-17 Viper,325.0,450,6590000
+FighterJet,F-16 Fighting Falcon,850.0,775,13335000
