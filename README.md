@@ -61,6 +61,7 @@ There were an immense amount of technologies and ideas used to make this program
 - String.split().
 - Double, Integer, and Long parses.
 - Use of abstract superclass.
+- Appropriate encapsulation.
 
 ## What was the most difficult part of this project?
 
