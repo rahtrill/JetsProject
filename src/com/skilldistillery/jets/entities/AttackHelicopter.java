@@ -1,6 +1,10 @@
 package com.skilldistillery.jets.entities;
 
 public class AttackHelicopter extends Jet implements CargoCarrier, CombatReady {
+	
+	// AttackHelicopter uses both CargoCarrier and CombatReady, as it could "technically" do both.
+	// Constructor calls the Jet superclass.
+	
 	public AttackHelicopter(String model, double speed, int range, long price) {
 		super(model, speed, range, price);
 	}
@@ -19,9 +23,11 @@ public class AttackHelicopter extends Jet implements CargoCarrier, CombatReady {
 
 	@Override
 	public String toString() {
-		return "[Attack Helicopter \t Model: " + super.getModel() + "\t Speed: " + super.getSpeed() + "\t Range: "
-				+ super.getRange() + "\t Price: $" + super.getPrice() + "]";
+		return super.toString();
 	}
+	
+	// Create() was created to format the toString() in a way appropriate for reading
+	// in a .txt file.
 	
 	public String create() {
 		return "AttackHelicopter," + super.getModel() + "," + super.getSpeed() + ","

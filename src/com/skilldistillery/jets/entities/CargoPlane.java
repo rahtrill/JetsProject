@@ -1,6 +1,9 @@
 package com.skilldistillery.jets.entities;
 
 public class CargoPlane extends Jet implements CargoCarrier {
+	
+	// Constructor refers to the Jet superclass.
+	
 	public CargoPlane(String model, double speed, int range, long price) {
 		super(model, speed, range, price);
 	}
@@ -18,8 +21,10 @@ public class CargoPlane extends Jet implements CargoCarrier {
 	
 	@Override
 	public String toString() {
-		return "[Cargo Plane \t Model: " + super.getModel() + "\t Speed: " + super.getSpeed() + "\t Range: "
-				+ super.getRange() + "\t Price: $" + super.getPrice() + "]";	}
+		return super.toString();
+	}	
+	// Create() was created to format the toString() in a way appropriate for reading
+	// in a .txt file.
 	
 	public String create() {
 		return "CargoPlane," + super.getModel() + "," + super.getSpeed() + ","

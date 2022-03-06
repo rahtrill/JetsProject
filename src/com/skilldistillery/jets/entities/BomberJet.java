@@ -1,6 +1,9 @@
 package com.skilldistillery.jets.entities;
 
 public class BomberJet extends Jet implements CombatReady {
+	
+	// Constructor refers to Jet superclass.
+	
 	public BomberJet(String model, double speed, int range, long price) {
 		super(model, speed, range, price);
 	}
@@ -18,9 +21,11 @@ public class BomberJet extends Jet implements CombatReady {
 	
 	@Override
 	public String toString() {
-		return "[Bomber Jet \t Model: " + super.getModel() + "\t Speed: " + super.getSpeed() + "\t Range: "
-				+ super.getRange() + "\t Price: $" + super.getPrice() + "]";	
-		}
+		return super.toString();
+	}
+	
+	// Create() was created to format the toString() in a way appropriate for reading
+	// in a .txt file.
 	
 	public String create() {
 		return "BomberJet," + super.getModel() + "," + super.getSpeed() + ","
